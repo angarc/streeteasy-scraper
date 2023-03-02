@@ -16,10 +16,19 @@ Filter rental units by:
 4. Whether or not rental has a brokers fee
 5. What area of manhattan the unit is located in
 
-To see how to configure these filters when looking for units, look at the `setUp()` function in the `soup_test.py` test file.
+To see how to configure these filters when looking for units, look at the `setUp()` function in the `test_soup.py` test file.
 
 ## Testing
 
 ```
-python3 -m unittest soup_test.py
+python3 -m unittest test_soup.py
+python3 -m unittest test_soup_integration.py
 ```
+
+To generate code coverage report:
+
+```
+$ python -m coverage run -m unittest discover
+$ python -m coverage html
+```
+
