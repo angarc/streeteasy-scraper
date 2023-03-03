@@ -20,26 +20,35 @@ To see how to configure these filters when looking for units, look at the `setUp
 
 ## Testing
 
-I'm using [Pipenv](https://github.com/pypa/pipenv) for this project. I've included all the libraries you need to 
-test and autoformat in the Pipfile. To get this running, ensure you have pipenv installed, and then 
+**IMPORTANT:** I'm using [Pipenv](https://github.com/pypa/pipenv) for this project. I've included all the libraries/commands you need to 
+test and autoformat in the Pipfile. To get this running, ensure you have pipenv installed (brew install pipenv), and then run these 2 lines:
 
 ```
 $ pipenv shell
 $ pipenv sync
 ```
 
-
+Now you should be able to run all the following commands for formatting and testing. Once you're done, you can exit the
+pipenv shell by simply running:
 
 ```
-python3 -m unittest test_soup.py
-python3 -m unittest test_soup_integration.py
+$ exit
 ```
 
-To generate code coverage report:
+---
+
+To run the tests:
+
+```
+$ python3 -m unittest test_soup.py
+$ python3 -m unittest test_soup_integration.py
+```
+
+To generate code a coverage report, run these 2 lines in this order:
 
 ```
 $ python -m coverage run -m unittest discover
-$ python -m coverage html
+$ python -m coverage report
 ```
 
 Current coverage:
@@ -58,8 +67,14 @@ TOTAL                           136      3    98%
 
 ## Autoformat
 
+To check if there are pep8 violations in the code, run:
+
+```
+$ flake8
+```
+
+To fix 99% of these errors, run:
+
 ```
 $ autopep8 --in-place --aggressive --aggressive -r .
-
-$ flake8
 ```
