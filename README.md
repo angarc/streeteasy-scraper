@@ -32,3 +32,24 @@ $ python -m coverage run -m unittest discover
 $ python -m coverage html
 ```
 
+Current coverage:
+```
+Name                          Stmts   Miss  Cover
+-------------------------------------------------
+listing_filter_option.py         50      2    96%
+rental_listing.py                10      1    90%
+soup_to_listings_adapter.py      16      0   100%
+soups.py                          9      0   100%
+test_soup.py                     33      0   100%
+test_soup_integration.py         18      0   100%
+-------------------------------------------------
+TOTAL                           136      3    98%
+```
+
+## Autoformat
+
+```
+$ autopep8 --in-place --aggressive --aggressive -r .
+
+$ flake8
+```
