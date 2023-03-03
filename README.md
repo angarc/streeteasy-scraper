@@ -20,6 +20,16 @@ To see how to configure these filters when looking for units, look at the `setUp
 
 ## Testing
 
+I'm using [Pipenv](https://github.com/pypa/pipenv) for this project. I've included all the libraries you need to 
+test and autoformat in the Pipfile. To get this running, ensure you have pipenv installed, and then 
+
+```
+$ pipenv shell
+$ pipenv sync
+```
+
+
+
 ```
 python3 -m unittest test_soup.py
 python3 -m unittest test_soup_integration.py
