@@ -1,0 +1,60 @@
+name: Build Status
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+    paths-ignore:
+      - CONTRIBUTING.md
+      - LICENSE
+      - README.md
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.9]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          # cache: "pip"
+          # cache-dependency-path: 'Pipfile.lock'
+
+      - name: Install Pipenv
+        run: pip install pipenv
+
+      - name: Start pipenv shell session
+        run: pipenv install
+
+      - name: Run tests
+        run: |
+          pipenv run python -m coverage run -m unittest discover
+          pipenv run python -m coverage xml
+
+      - name: Run autoformat
+        run: |
+          pipenv run autopep8 --in-place --aggressive --aggressive -r .
+          pipenv run flake8
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: pytest-results-${{ matrix.os }}-${{ matrix.python-version }}
+          path: coverage.xml
+        if: ${{ always() }}
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+
+
