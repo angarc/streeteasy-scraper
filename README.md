@@ -3,6 +3,10 @@
 
 [![issue tracker](https://img.shields.io/github/issues/angarc/streeteasy-scraper)]()
 
+[![codecov](https://img.shields.io/codecov/c/github/angarc/streeteasy-scraper)]()
+
+[![build](https://img.shields.io/github/actions/workflow/status/angarc/streeteasy-scraper/build_status.yml)]()
+
 ## Overview
 streeteasy-scraper is an api for you to use in your projects that can provide current information on vacant rental units in NYC.
 
